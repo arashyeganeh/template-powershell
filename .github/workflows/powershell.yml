@@ -1,0 +1,39 @@
+name: PowerShell
+
+on: [push, pull_request, workflow_dispatch]
+  push:
+    paths:
+      - "**.ps1"
+  pull_request:
+    paths:
+      - "**.ps1"
+  workflow_dispatch:
+    paths:
+      - "**.ps1"
+
+jobs:
+  powershell-check:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install-Module
+        run: |
+          Install-Module -Name PSScriptAnalyzer -Force -Scope CurrentUser
+
+      - name: Invoke-Formatter
+        run: |
+          Get-ChildItem -Path ./scripts -Filter *.ps1 -Recurse | ForEach-Object {
+            $formatted = Invoke-Formatter -Path $_.FullName
+            Set-Content -Path $_.FullName -Value $formatted
+          }
+
+      - name: PSScriptAnalyzer
+        run: |
+          $results = Invoke-ScriptAnalyzer -Path ./scripts -Recurse
+          if ($results.Count -gt 0) {
+            $results | Format-Table
+            exit 1
+          }
