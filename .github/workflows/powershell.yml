@@ -26,7 +26,7 @@ jobs:
         shell: pwsh
         run: |
           Import-Module PSScriptAnalyzer
-          $results = Invoke-ScriptAnalyzer -Path . -Recurse
+          $results = Invoke-ScriptAnalyzer -Path . -Recurse -settings .\PSScriptAnalyzerSettings.psd1
             if ($results.Count -gt 0) {
             $results | Format-Table
             exit 1
