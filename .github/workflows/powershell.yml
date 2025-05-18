@@ -1,6 +1,6 @@
 name: PowerShell
 
-on: [push, pull_request, workflow_dispatch]
+on:
   push:
     paths:
       - "**.ps1"
@@ -8,8 +8,6 @@ on: [push, pull_request, workflow_dispatch]
     paths:
       - "**.ps1"
   workflow_dispatch:
-    paths:
-      - "**.ps1"
 
 jobs:
   powershell-check:
@@ -18,22 +16,18 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-
-      - name: Install-Module
+        
+      - name: Install PSScriptAnalyzer
+        shell: pwsh
         run: |
           Install-Module -Name PSScriptAnalyzer -Force -Scope CurrentUser
 
-      - name: Invoke-Formatter
+      - name: Analyze Scripts
+        shell: pwsh
         run: |
-          Get-ChildItem -Path ./scripts -Filter *.ps1 -Recurse | ForEach-Object {
-            $formatted = Invoke-Formatter -Path $_.FullName
-            Set-Content -Path $_.FullName -Value $formatted
-          }
-
-      - name: PSScriptAnalyzer
-        run: |
-          $results = Invoke-ScriptAnalyzer -Path ./scripts -Recurse
-          if ($results.Count -gt 0) {
+          Import-Module PSScriptAnalyzer
+          $results = Invoke-ScriptAnalyzer -Path . -Recurse
+            if ($results.Count -gt 0) {
             $results | Format-Table
             exit 1
           }

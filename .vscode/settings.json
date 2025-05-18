@@ -1,0 +1,39 @@
+{
+  "editor.fontSize": 18,
+  "editor.minimap.enabled": false,
+  "editor.stickyScroll.enabled": false,
+  "workbench.colorTheme": "Default Dark+",
+
+  "terminal.integrated.enableMultiLinePasteWarning": false,
+
+  "explorer.confirmDelete": false,
+  "explorer.confirmDragAndDrop": false,
+  "files.defaultLanguage": "powershell",
+  "git.openRepositoryInParentFolders": "always",
+
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[handlebars]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "typescript.updateImportsOnFileMove.enabled": "always",
+
+  "debug.onTaskErrors": "debugAnyway",
+  "debug.openDebug": "neverOpen",
+
+  "editor.tabCompletion": "on",
+  "editor.wordSeparators": "`~!@#%^&*()-=+[{]}\\|;:'\",.<>/?",
+
+  "powershell.powerShellDefaultVersion": "Windows PowerShell",
+  "powershell.integratedConsole.useLegacyReadLine": true,
+  "powershell.integratedConsole.showOnStartup": true,
+  "powershell.integratedConsole.focusConsoleOnExecute": false,
+  "powershell.codeFolding.showLastLine": false,
+  "powershell.buttons.showPanelMovementButtons": true,
+  "powershell.sideBar.CommandExplorerVisibility": true,
+  "powershell.developer.editorServicesLogLevel": "Verbose",
+  "powershell.scriptAnalysis.enable": true,
+  "powershell.scriptAnalysis.settingsPath": ".vscode/PSScriptAnalyzerSettings.psd1",
+  "workbench.activityBar.location": "hidden"
+}

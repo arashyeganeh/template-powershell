@@ -1,0 +1,17 @@
+{
+  "recommendations": [
+    "ms-vscode.powershell",
+    "eamodio.gitlens",
+    "hashicorp.terraform",
+    "shardulm94.trailing-spaces",
+    "timonwong.shellcheck",
+    "usernamehw.errorlens",
+    "oderwat.indent-rainbow",
+    "foxundermoon.shell-format"
+  ],
+  "unwantedRecommendations": [
+    "esbenp.prettier-vscode",
+    "dbaeumer.vscode-eslint",
+    "formulahendry.auto-rename-tag"
+  ]
+}
